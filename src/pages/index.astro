@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const testimonials = [
+  {
+    name: 'Tonje Ø. Martinsen',
+    text: 'Er superfornøyd med barnebildene og bryllupsbildene vi har fått!',
+  },
+  {
+    name: 'Thea Karina Jakobsson',
+    text: 'Fantastiske bilder av de tre barna våre, og et fantastisk håndlag med ungene under fotograferingen. 100% anbefalning fra oss her på Almemoen.',
+  },
+  {
+    name: 'Kenneth Hansen',
+    text: 'Kreativ hjerne på denne fotografen, morsom og blid. Kommer definitivt til å bruke han ved neste anledning! Anbefales på det varmeste!',
+  },
+]
+---
+
+<Layout title="Forside">
+  <!-- Hero collage -->
+  <section class="h-[90vh] min-h-[560px] grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-1">
+
+    <!-- Stor venstre: tekst + bilde (full høyde) -->
+    <div class="relative row-span-2 overflow-hidden group cursor-pointer" onclick="window.openLightbox('alternativ-barnebilde')">
+      <img src="/images/alternativ_barnebilde.png" alt="Barnefoto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+    <!-- Øvre col 2 -->
+    <div class="relative overflow-hidden group cursor-pointer" onclick="window.openLightbox('parbilde-farger')">
+      <img src="/images/parbilde_farger.png" alt="Parbilde farger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+    <!-- Øvre col 3 -->
+    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('babykrybbe')">
+      <img src="/images/babykrybbe.png" alt="Baby i krybbe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+    <!-- Øvre col 4 -->
+    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('parbilder')">
+      <img src="/images/parbilder.png" alt="Parbilde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+    <!-- Nedre col 2 -->
+    <div class="relative overflow-hidden group cursor-pointer" onclick="window.openLightbox('babygitar')">
+      <img src="/images/babygitar.png" alt="Baby med gitar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+    <!-- Nedre col 3 -->
+    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('gronnbaby')">
+      <img src="/images/gr%C3%B8nnbaby.png" alt="Baby i grønt" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+    <!-- Nedre col 4 -->
+    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('harley')">
+      <img src="/images/harley.png" alt="Harley Davidson" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+    </div>
+
+  </section>
+
+  <!-- Intro -->
+  <section class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <h2 class="font-semibold mb-4">Øyeblikk som varer</h2>
+    <p class="text-stone-500 text-lg leading-relaxed">
+      Audun Haugen er en erfaren portrett- og familiefotograf med et kreativt blikk og et naturlig håndlag med folk i alle aldre. Enten det er babyfotografering, konfirmant eller bryllup — hvert bilde forteller din historie.
+    </p>
+    <div class="flex gap-4 justify-center mt-8 flex-wrap">
+      <a href="/galleri" style="background-color: var(--accent)" class="text-white px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-85">
+        Se galleri
+      </a>
+      <a href="/kontakt" style="border-color: var(--accent); color: var(--accent)" class="border px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-75">
+        Ta kontakt
+      </a>
+    </div>
+    <a href="/om-meg" class="inline-block mt-6 text-sm font-medium text-stone-400 underline underline-offset-4 hover:text-stone-700 transition-colors">
+      Les mer om Audun →
+    </a>
+  </section>
+
+  <!-- Kategorier -->
+  <section class="max-w-5xl mx-auto px-6 pb-20">
+    <h2 class="font-semibold text-center mb-10">Hva kan jeg hjelpe med?</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        { label: 'Barn & familie', img: '/images/familie.png' },
+        { label: 'Konfirmant', img: '/images/konfirmanten.png' },
+        { label: 'Bryllupsfoto', img: '/images/parbilder.png' },
+        { label: 'Portrett', img: '/images/svarthvit.png' },
+        { label: 'Babyfoto', img: '/images/babykrybbe.png' },
+        { label: 'Bedrift & reklame', img: '/images/svarthvit.png' },
+      ].map(({ label, img }) => (
+        <a href="/galleri" class="relative overflow-hidden rounded-lg aspect-square group">
+          <img src={img} alt={label} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+          <span class="absolute bottom-3 left-3 text-white font-medium text-sm">{label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Mobilt studio -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="overflow-hidden rounded-2xl bg-stone-900">
+        <img
+          src="/images/mobilt_studio_foto_i_ditt_hjem_bilde.png"
+          alt="Mobilt fotostudio hjemme hos deg"
+          class="w-full object-contain"
+        />
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-stone-400 mb-3">Der DU er</p>
+        <h2 class="font-semibold mb-5">Studioet kommer hjem til deg</h2>
+        <p class="text-stone-500 leading-relaxed mb-6">
+          Audun har et komplett mobilt fotostudio og reiser hjem til deg. Du slipper å stresse med transport og fremmede omgivelser — bildene tas der familien allerede er trygg.
+        </p>
+        <ul class="space-y-2 text-sm text-stone-600 mb-8">
+          {['Profesjonelt utstyr på din adresse', 'Hele Ringerike og omegn', 'Rolige omgivelser for barn og baby', 'Fleksibel timeavtale'].map(item => (
+            <li class="flex items-center gap-2">
+              <span class="text-stone-400">✓</span> {item}
+            </li>
+          ))}
+        </ul>
+        <a href="/kontakt" class="inline-block text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+          Bestill hjemmebesøk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-stone-900 py-24 px-6 overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-stone-500 mb-4">Fornøyde kunder</p>
+      <h2 class="font-semibold text-center text-white mb-16">Hva sier kundene?</h2>
+
+      <div class="grid md:grid-cols-3 gap-px bg-stone-700">
+        {testimonials.map(({ name, text }, i) => (
+          <div class="bg-stone-900 p-8 flex flex-col justify-between">
+            <div>
+              <span class="block text-6xl leading-none font-serif mb-4" style="color: var(--accent); font-family: 'Cormorant Garamond', serif">"</span>
+              <p class="text-stone-300 leading-relaxed text-lg italic" style="font-family: 'Cormorant Garamond', serif">{text}</p>
+            </div>
+            <p class="mt-6 text-xs uppercase tracking-widest text-stone-500">— {name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 text-center">
+    <h2 class="font-semibold mb-4">Klar for en fotografering?</h2>
+    <p class="text-stone-500 mb-8">Ta kontakt for å avtale time eller få et tilbud.</p>
+    <a href="/kontakt" class="text-white px-8 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+      Kontakt meg
+    </a>
+  </section>
+</Layout>

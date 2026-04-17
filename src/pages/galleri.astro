@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { allImages } from '../data/images'
+
+const images = [
+  { id: 'konfirmanten', src: '/images/konfirmanten.png', alt: 'Konfirmantfoto', category: 'konfirmant' },
+  { id: 'familie', src: '/images/familie.png', alt: 'Familiefoto', category: 'barn-familie' },
+  { id: 'babykrybbe', src: '/images/babykrybbe.png', alt: 'Baby i krybbe', category: 'barn-familie' },
+  { id: 'barn-svarthvitt', src: '/images/barn1_svarthvitt.png', alt: 'Barn svart-hvitt', category: 'barn-familie' },
+  { id: 'barnmednavneskilt', src: '/images/barnmednavneskilt.png', alt: 'Barn med navneskilt', category: 'barn-familie' },
+  { id: 'barn-skateboard', src: '/images/barn_skateboard.png', alt: 'Barn på skateboard', category: 'barn-familie' },
+  { id: 'sovebaby', src: '/images/sovebaby_svarthvit.png', alt: 'Sovende baby', category: 'barn-familie' },
+  { id: 'alternativ-barnebilde', src: '/images/alternativ_barnebilde.png', alt: 'Barnefoto', category: 'barn-familie' },
+  { id: 'b1', src: '/images/b1.png', alt: 'Barnefoto', category: 'barn-familie' },
+  { id: 'parbilder', src: '/images/parbilder.png', alt: 'Parbilde', category: 'bryllup' },
+  { id: 'parbilde-farger', src: '/images/parbilde_farger.png', alt: 'Parbilde farger', category: 'bryllup' },
+  { id: 'svarthvit', src: '/images/svarthvit.png', alt: 'Portrett svart-hvitt', category: 'portrett' },
+  { id: 'alternativbaby', src: '/images/alternativbaby.png', alt: 'Babyfoto', category: 'barn-familie' },
+  { id: 'babygitar', src: '/images/babygitar.png', alt: 'Baby med gitar', category: 'barn-familie' },
+  { id: 'babyleonore', src: '/images/babyleonore.png', alt: 'Baby Leonore', category: 'barn-familie' },
+  { id: 'harley', src: '/images/harley.png', alt: 'Harley Davidson', category: 'bedrift' },
+  { id: 'harley2', src: '/images/harley2.png', alt: 'Harley Davidson 2', category: 'bedrift' },
+]
+
+const categories = [
+  { id: 'alle', label: 'Alle' },
+  { id: 'barn-familie', label: 'Barn & familie' },
+  { id: 'konfirmant', label: 'Konfirmant' },
+  { id: 'bryllup', label: 'Bryllupsfoto' },
+  { id: 'portrett', label: 'Portrett' },
+  { id: 'bedrift', label: 'Bedrift & reklame' },
+]
+---
+
+<Layout title="Galleri">
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold text-center mb-3">Galleri</h1>
+    <p class="text-stone-500 text-center mb-10">Et utvalg av arbeidene mine</p>
+
+    <!-- Filter knapper -->
+    <div class="flex flex-wrap gap-3 justify-center mb-12" id="filter-btns">
+      {categories.map(({ id, label }) => (
+        <button
+          data-filter={id}
+          class={`px-5 py-2 rounded-full text-sm font-medium border transition-colors cursor-pointer
+            ${id === 'alle' ? 'bg-stone-800 text-white border-stone-800' : 'bg-white text-stone-600 border-stone-300 hover:border-stone-600'}`}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Bildegrid -->
+    <div class="columns-2 md:columns-3 gap-4 space-y-4" id="gallery-grid">
+      {images.map(({ id, src, alt, category }) => (
+        <div data-category={category} class="break-inside-avoid overflow-hidden rounded-lg gallery-item cursor-pointer" onclick={`window.openLightbox('${id}')`}>
+          <img
+            src={src}
+            alt={alt}
+            class="w-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('#filter-btns button')
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item')
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!
+
+      btns.forEach(b => {
+        b.classList.remove('bg-stone-800', 'text-white', 'border-stone-800')
+        b.classList.add('bg-white', 'text-stone-600', 'border-stone-300')
+      })
+      btn.classList.add('bg-stone-800', 'text-white', 'border-stone-800')
+      btn.classList.remove('bg-white', 'text-stone-600', 'border-stone-300')
+
+      items.forEach(item => {
+        if (filter === 'alle' || item.dataset.category === filter) {
+          item.style.display = ''
+        } else {
+          item.style.display = 'none'
+        }
+      })
+    })
+  })
+</script>

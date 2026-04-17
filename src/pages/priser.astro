@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const packages = [
+  {
+    name: 'Portrett',
+    desc: 'Individuelt portrett eller headshot. Perfekt for LinkedIn, CV eller profilering.',
+    includes: ['1 time fotografering', 'Opptil 10 redigerte bilder', 'Digital leveranse'],
+  },
+  {
+    name: 'Barn & familie',
+    desc: 'Naturlige og varme familiebilder — hjemme hos dere eller på valgt lokasjon.',
+    includes: ['1,5 time fotografering', 'Opptil 20 redigerte bilder', 'Digital leveranse', 'Fritt valg av lokasjon'],
+    highlight: true,
+  },
+  {
+    name: 'Konfirmant',
+    desc: 'Minnerike bilder fra en stor dag. Både studiofoto og utendørs tilgjengelig.',
+    includes: ['2 timer fotografering', 'Opptil 30 redigerte bilder', 'Digital leveranse', 'Kleskifte inkludert'],
+  },
+  {
+    name: 'Bryllup',
+    desc: 'Full dekning av bryllupsdagen fra forberedelser til fest.',
+    includes: ['Heldagsdekning', 'Ubegrenset bilder', 'Redigering av 100+ bilder', 'Digital album'],
+  },
+  {
+    name: 'Baby & nyfødt',
+    desc: 'Tidløse bilder av de første dyrebare ukene.',
+    includes: ['1 time fotografering', 'Opptil 15 redigerte bilder', 'Digital leveranse', 'Hjemmebesøk mulig'],
+  },
+  {
+    name: 'Bedrift & reklame',
+    desc: 'Profesjonelle bilder til markedsføring, nettside eller sosiale medier.',
+    includes: ['Etter avtale', 'Redigerte bilder', 'Kommersiell lisens', 'Rask levering'],
+  },
+]
+---
+
+<Layout title="Priser">
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold text-center mb-3">Priser</h1>
+    <p class="text-stone-500 text-center mb-14 max-w-xl mx-auto">
+      Alle pakker inkluderer profesjonell redigering og digital leveranse. Ta kontakt for eksakt pris og skreddersydde løsninger.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {packages.map(({ name, desc, includes, highlight }) => (
+        <div class={`rounded-2xl p-6 border flex flex-col ${highlight ? 'bg-stone-800 text-white border-stone-800' : 'bg-white border-stone-200'}`}>
+          <h2 class={`text-xl font-semibold mb-2 ${highlight ? 'text-white' : 'text-stone-800'}`}>{name}</h2>
+          <p class={`text-sm mb-5 leading-relaxed ${highlight ? 'text-stone-300' : 'text-stone-500'}`}>{desc}</p>
+          <ul class="space-y-2 flex-1">
+            {includes.map(item => (
+              <li class={`flex items-center gap-2 text-sm ${highlight ? 'text-stone-200' : 'text-stone-600'}`}>
+                <span class={highlight ? 'text-stone-300' : 'text-stone-400'}>✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/kontakt"
+            class="mt-6 text-center px-4 py-2.5 rounded-full text-sm font-medium text-white transition-opacity hover:opacity-85"
+            style="background-color: var(--accent)"
+          >
+            Be om tilbud
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-stone-400 text-sm mt-12">
+      Prisene er veiledende. Kontakt meg for nøyaktig pris og tilpasning til ditt behov.
+    </p>
+  </section>
+</Layout>

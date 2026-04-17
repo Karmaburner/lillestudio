@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Om meg">
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <img
+          src="/images/Fotograf_Audun_Milevasslien_portrett_Om_Meg.png"
+          alt="Fotograf Audun Haugen"
+          class="w-full rounded-2xl object-cover aspect-[3/4]"
+        />
+      </div>
+      <div>
+        <h1 class="text-4xl font-bold mb-6">Hei, jeg er Audun</h1>
+        <div class="space-y-4 text-stone-600 leading-relaxed">
+          <p>
+            Jeg er en lidenskapelig fotograf med spesialitet innen portrett, familie og livsstilsfotografering.
+          </p>
+          <p>
+            For meg handler fotografering om å fange ekte øyeblikk — ikke iscenesatte positurer, men naturlig glede og kjærlighet slik den er. Enten det er et nyfødt barn, en konfirmant eller et brudepar, jobber jeg for å skape bilder som varer livet ut.
+          </p>
+          <p>
+            Jeg er kjent for å være morsom og blid på jobb, noe som gjør at selv de minste barna føler seg trygge foran kameraet.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 text-sm">
+          <a href="tel:99039160" class="flex items-center gap-3 text-stone-600 hover:text-stone-900 transition-colors">
+            <span class="w-8 h-8 bg-stone-100 rounded-full flex items-center justify-center">📞</span>
+            99 03 91 60
+          </a>
+          <a href="mailto:audun@lillestudio.no" class="flex items-center gap-3 text-stone-600 hover:text-stone-900 transition-colors">
+            <span class="w-8 h-8 bg-stone-100 rounded-full flex items-center justify-center">✉️</span>
+            audun@lillestudio.no
+          </a>
+          <a href="https://www.facebook.com/fotografaudunhaugen" target="_blank" rel="noopener" class="flex items-center gap-3 text-stone-600 hover:text-stone-900 transition-colors">
+            <span class="w-8 h-8 bg-stone-100 rounded-full flex items-center justify-center">📘</span>
+            Facebook
+          </a>
+        </div>
+
+        <a href="/kontakt" class="inline-block mt-8 text-white px-6 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+          Ta kontakt
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
