@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+const base = import.meta.env.BASE_URL
 
 const testimonials = [
   {
@@ -15,6 +16,15 @@ const testimonials = [
     text: 'Kreativ hjerne på denne fotografen, morsom og blid. Kommer definitivt til å bruke han ved neste anledning! Anbefales på det varmeste!',
   },
 ]
+
+const kategorier = [
+  { label: 'Barn & familie', img: `${base}images/familie.png` },
+  { label: 'Konfirmant', img: `${base}images/konfirmanten.png` },
+  { label: 'Bryllupsfoto', img: `${base}images/parbilder.png` },
+  { label: 'Portrett', img: `${base}images/svarthvit.png` },
+  { label: 'Babyfoto', img: `${base}images/babykrybbe.png` },
+  { label: 'Bedrift & reklame', img: `${base}images/svarthvit.png` },
+]
 ---
 
 <Layout title="Forside">
@@ -23,37 +33,37 @@ const testimonials = [
 
     <!-- Stor venstre: tekst + bilde (full høyde) -->
     <div class="relative row-span-2 overflow-hidden group cursor-pointer" onclick="window.openLightbox('alternativ-barnebilde')">
-      <img src="/images/alternativ_barnebilde.png" alt="Barnefoto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/alternativ_barnebilde.png`} alt="Barnefoto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
     <!-- Øvre col 2 -->
     <div class="relative overflow-hidden group cursor-pointer" onclick="window.openLightbox('parbilde-farger')">
-      <img src="/images/parbilde_farger.png" alt="Parbilde farger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/parbilde_farger.png`} alt="Parbilde farger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
     <!-- Øvre col 3 -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('babykrybbe')">
-      <img src="/images/babykrybbe.png" alt="Baby i krybbe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/babykrybbe.png`} alt="Baby i krybbe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
     <!-- Øvre col 4 -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('parbilder')">
-      <img src="/images/parbilder.png" alt="Parbilde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/parbilder.png`} alt="Parbilde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
     <!-- Nedre col 2 -->
     <div class="relative overflow-hidden group cursor-pointer" onclick="window.openLightbox('babygitar')">
-      <img src="/images/babygitar.png" alt="Baby med gitar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/babygitar.png`} alt="Baby med gitar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
     <!-- Nedre col 3 -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('gronnbaby')">
-      <img src="/images/gr%C3%B8nnbaby.png" alt="Baby i grønt" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/gr%C3%B8nnbaby.png`} alt="Baby i grønt" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
     <!-- Nedre col 4 -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('harley')">
-      <img src="/images/harley.png" alt="Harley Davidson" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <img src={`${base}images/harley.png`} alt="Harley Davidson" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
   </section>
@@ -65,16 +75,16 @@ const testimonials = [
       Audun Haugen er en erfaren portrett- og familiefotograf med et kreativt blikk og et naturlig håndlag med folk i alle aldre. Enten det er babyfotografering, konfirmant eller bryllup — hvert bilde forteller din historie.
     </p>
     <div class="flex gap-4 justify-center mt-8 flex-wrap">
-      <a href="/galleri" style="background-color: var(--accent)" class="text-white px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-85 inline-flex items-center gap-2">
+      <a href={`${base}galleri`} style="background-color: var(--accent)" class="text-white px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-85 inline-flex items-center gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Se galleri
       </a>
-      <a href="/kontakt" style="border-color: var(--accent); color: var(--accent)" class="border px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-75 inline-flex items-center gap-2">
+      <a href={`${base}kontakt`} style="border-color: var(--accent); color: var(--accent)" class="border px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-75 inline-flex items-center gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Ta kontakt
       </a>
     </div>
-    <a href="/om-meg" class="inline-block mt-6 text-sm font-medium text-stone-400 underline underline-offset-4 hover:text-stone-700 transition-colors">
+    <a href={`${base}om-meg`} class="inline-block mt-6 text-sm font-medium text-stone-400 underline underline-offset-4 hover:text-stone-700 transition-colors">
       Les mer om Audun →
     </a>
   </section>
@@ -83,15 +93,8 @@ const testimonials = [
   <section class="max-w-5xl mx-auto px-6 pb-12 md:pb-20">
     <h2 class="font-semibold text-center mb-10">Hva kan jeg hjelpe med?</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {[
-        { label: 'Barn & familie', img: '/images/familie.png' },
-        { label: 'Konfirmant', img: '/images/konfirmanten.png' },
-        { label: 'Bryllupsfoto', img: '/images/parbilder.png' },
-        { label: 'Portrett', img: '/images/svarthvit.png' },
-        { label: 'Babyfoto', img: '/images/babykrybbe.png' },
-        { label: 'Bedrift & reklame', img: '/images/svarthvit.png' },
-      ].map(({ label, img }) => (
-        <a href="/galleri" class="relative overflow-hidden rounded-lg aspect-square group">
+      {kategorier.map(({ label, img }) => (
+        <a href={`${base}galleri`} class="relative overflow-hidden rounded-lg aspect-square group">
           <img src={img} alt={label} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
           <span class="absolute bottom-3 left-3 text-white font-medium text-sm">{label}</span>
@@ -105,7 +108,7 @@ const testimonials = [
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="overflow-hidden rounded-2xl" style="background-color: #F7F3EE;">
         <img
-          src="/images/mobilt_studio_foto_i_ditt_hjem_bilde.png"
+          src={`${base}images/mobilt_studio_foto_i_ditt_hjem_bilde.png`}
           alt="Mobilt fotostudio hjemme hos deg"
           class="w-full object-contain"
         />
@@ -123,7 +126,7 @@ const testimonials = [
             </li>
           ))}
         </ul>
-        <a href="/kontakt" class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+        <a href={`${base}kontakt`} class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Bestill hjemmebesøk
         </a>
@@ -155,7 +158,7 @@ const testimonials = [
   <section class="py-12 md:py-20 px-6 text-center">
     <h2 class="font-semibold mb-4">Klar for en fotografering?</h2>
     <p class="text-stone-500 mb-8">Ta kontakt for å avtale time eller få et tilbud.</p>
-    <a href="/kontakt" class="inline-flex items-center gap-2 text-white px-8 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+    <a href={`${base}kontakt`} class="inline-flex items-center gap-2 text-white px-8 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       Kontakt meg
     </a>

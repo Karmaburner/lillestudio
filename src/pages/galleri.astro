@@ -1,25 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { allImages } from '../data/images'
+const base = import.meta.env.BASE_URL
 
 const images = [
-  { id: 'konfirmanten', src: '/images/konfirmanten.png', alt: 'Konfirmantfoto', category: 'konfirmant' },
-  { id: 'familie', src: '/images/familie.png', alt: 'Familiefoto', category: 'barn-familie' },
-  { id: 'babykrybbe', src: '/images/babykrybbe.png', alt: 'Baby i krybbe', category: 'barn-familie' },
-  { id: 'barn-svarthvitt', src: '/images/barn1_svarthvitt.png', alt: 'Barn svart-hvitt', category: 'barn-familie' },
-  { id: 'barnmednavneskilt', src: '/images/barnmednavneskilt.png', alt: 'Barn med navneskilt', category: 'barn-familie' },
-  { id: 'barn-skateboard', src: '/images/barn_skateboard.png', alt: 'Barn på skateboard', category: 'barn-familie' },
-  { id: 'sovebaby', src: '/images/sovebaby_svarthvit.png', alt: 'Sovende baby', category: 'barn-familie' },
-  { id: 'alternativ-barnebilde', src: '/images/alternativ_barnebilde.png', alt: 'Barnefoto', category: 'barn-familie' },
-  { id: 'b1', src: '/images/b1.png', alt: 'Barnefoto', category: 'barn-familie' },
-  { id: 'parbilder', src: '/images/parbilder.png', alt: 'Parbilde', category: 'bryllup' },
-  { id: 'parbilde-farger', src: '/images/parbilde_farger.png', alt: 'Parbilde farger', category: 'bryllup' },
-  { id: 'svarthvit', src: '/images/svarthvit.png', alt: 'Portrett svart-hvitt', category: 'portrett' },
-  { id: 'alternativbaby', src: '/images/alternativbaby.png', alt: 'Babyfoto', category: 'barn-familie' },
-  { id: 'babygitar', src: '/images/babygitar.png', alt: 'Baby med gitar', category: 'barn-familie' },
-  { id: 'babyleonore', src: '/images/babyleonore.png', alt: 'Baby Leonore', category: 'barn-familie' },
-  { id: 'harley', src: '/images/harley.png', alt: 'Harley Davidson', category: 'bedrift' },
-  { id: 'harley2', src: '/images/harley2.png', alt: 'Harley Davidson 2', category: 'bedrift' },
+  { id: 'konfirmanten', src: `${base}images/konfirmanten.png`, alt: 'Konfirmantfoto', category: 'konfirmant' },
+  { id: 'familie', src: `${base}images/familie.png`, alt: 'Familiefoto', category: 'barn-familie' },
+  { id: 'babykrybbe', src: `${base}images/babykrybbe.png`, alt: 'Baby i krybbe', category: 'barn-familie' },
+  { id: 'barn-svarthvitt', src: `${base}images/barn1_svarthvitt.png`, alt: 'Barn svart-hvitt', category: 'barn-familie' },
+  { id: 'barnmednavneskilt', src: `${base}images/barnmednavneskilt.png`, alt: 'Barn med navneskilt', category: 'barn-familie' },
+  { id: 'barn-skateboard', src: `${base}images/barn_skateboard.png`, alt: 'Barn på skateboard', category: 'barn-familie' },
+  { id: 'sovebaby', src: `${base}images/sovebaby_svarthvit.png`, alt: 'Sovende baby', category: 'barn-familie' },
+  { id: 'alternativ-barnebilde', src: `${base}images/alternativ_barnebilde.png`, alt: 'Barnefoto', category: 'barn-familie' },
+  { id: 'b1', src: `${base}images/b1.png`, alt: 'Barnefoto', category: 'barn-familie' },
+  { id: 'parbilder', src: `${base}images/parbilder.png`, alt: 'Parbilde', category: 'bryllup' },
+  { id: 'parbilde-farger', src: `${base}images/parbilde_farger.png`, alt: 'Parbilde farger', category: 'bryllup' },
+  { id: 'svarthvit', src: `${base}images/svarthvit.png`, alt: 'Portrett svart-hvitt', category: 'portrett' },
+  { id: 'alternativbaby', src: `${base}images/alternativbaby.png`, alt: 'Babyfoto', category: 'barn-familie' },
+  { id: 'babygitar', src: `${base}images/babygitar.png`, alt: 'Baby med gitar', category: 'barn-familie' },
+  { id: 'babyleonore', src: `${base}images/babyleonore.png`, alt: 'Baby Leonore', category: 'barn-familie' },
+  { id: 'harley', src: `${base}images/harley.png`, alt: 'Harley Davidson', category: 'bedrift' },
+  { id: 'harley2', src: `${base}images/harley2.png`, alt: 'Harley Davidson 2', category: 'bedrift' },
 ]
 
 const categories = [

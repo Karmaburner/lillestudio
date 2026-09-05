@@ -7,12 +7,13 @@ interface Props {
 }
 
 const { title = 'Lille Studio' } = Astro.props
+const base = import.meta.env.BASE_URL
 const nav = [
-  { href: '/', label: 'Forside' },
-  { href: '/galleri', label: 'Galleri' },
-  { href: '/priser', label: 'Priser' },
-  { href: '/om-meg', label: 'Om meg' },
-  { href: '/kontakt', label: 'Kontakt' },
+  { href: base, label: 'Forside' },
+  { href: `${base}galleri`, label: 'Galleri' },
+  { href: `${base}priser`, label: 'Priser' },
+  { href: `${base}om-meg`, label: 'Om meg' },
+  { href: `${base}kontakt`, label: 'Kontakt' },
 ]
 const currentPath = Astro.url.pathname
 ---
@@ -32,7 +33,7 @@ const currentPath = Astro.url.pathname
     <header class="sticky top-0 z-50 backdrop-blur border-b border-stone-200" style="background-color: #F7F3EEF2;">
       <nav class="max-w-5xl mx-auto px-6 h-20 md:h-44 flex items-center justify-between">
         <a href="/">
-          <img src="/images/Logo_Milevasslien.png" alt="Lille Studio" class="h-14 md:h-40 w-auto" />
+          <img src={`${base}images/Logo_Milevasslien.png`} alt="Lille Studio" class="h-14 md:h-40 w-auto" />
         </a>
         <ul class="hidden md:flex gap-12 text-stone-500" style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; letter-spacing: 0.08em;">
           {nav.map(({ href, label }) => (

@@ -1,5 +1,6 @@
 ---
 import { allImages } from '../data/images'
+const BASE_URL = import.meta.env.BASE_URL
 ---
 
 <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center" role="dialog" aria-modal="true">
@@ -32,7 +33,7 @@ import { allImages } from '../data/images'
 
 </div>
 
-<script define:vars={{ allImages }}>
+<script define:vars={{ allImages, BASE_URL }}>
   const lb = document.getElementById('lightbox')
   const lbImg = document.getElementById('lb-img')
   const lbCategory = document.getElementById('lb-category')
@@ -67,7 +68,7 @@ import { allImages } from '../data/images'
   function showCurrent() {
     const img = sequence[currentIndex]
     if (!img) return
-    lbImg.src = img.src
+    lbImg.src = BASE_URL + img.src.replace(/^\//, '')
     lbImg.alt = img.comment
     lbCategory.textContent = img.categoryLabel
     lbComment.textContent = img.comment

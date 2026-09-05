@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+const base = import.meta.env.BASE_URL
 ---
 
 <Layout title="Om meg">
@@ -7,7 +8,7 @@ import Layout from '../layouts/Layout.astro'
     <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
       <div>
         <img
-          src="/images/Fotograf_Audun_Milevasslien_portrett_Om_Meg.png"
+          src={`${base}images/Fotograf_Audun_Milevasslien_portrett_Om_Meg.png`}
           alt="Fotograf Audun Haugen"
           class="w-full rounded-2xl object-cover aspect-[3/4]"
         />
@@ -53,7 +54,7 @@ import Layout from '../layouts/Layout.astro'
           </a>
         </div>
 
-        <a href="/kontakt" class="inline-flex items-center gap-2 mt-8 text-white px-6 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+        <a href={`${base}kontakt`} class="inline-flex items-center gap-2 mt-8 text-white px-6 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Ta kontakt
         </a>
