@@ -10,7 +10,7 @@ export interface ImageData {
 export const allImages: ImageData[] = [
   {
     id: 'alternativ-barnebilde',
-    src: '/images/alternativ_barnebilde.png',
+    src: '/images/alternativ_barnebilde.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Naturlig og ekte — akkurat slik barn er best.',
@@ -18,7 +18,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'parbilde-farger',
-    src: '/images/parbilde_farger.png',
+    src: '/images/parbilde_farger.webp',
     category: 'bryllup',
     categoryLabel: '#Bryllupsfoto',
     comment: 'Kjærligheten i farger.',
@@ -26,7 +26,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'babykrybbe',
-    src: '/images/babykrybbe.png',
+    src: '/images/babykrybbe.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'De aller første dagene — tidløs skjønnhet.',
@@ -34,7 +34,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'parbilder',
-    src: '/images/parbilder.png',
+    src: '/images/parbilder.webp',
     category: 'bryllup',
     categoryLabel: '#Bryllupsfoto',
     comment: 'To hjerter, ett bilde.',
@@ -42,7 +42,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'babygitar',
-    src: '/images/babygitar.png',
+    src: '/images/babygitar.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Fremtidens rockestjerne.',
@@ -50,7 +50,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'gronnbaby',
-    src: '/images/gr%C3%B8nnbaby.png',
+    src: '/images/gr%C3%B8nnbaby.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Grønn og herlig.',
@@ -58,7 +58,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'harley',
-    src: '/images/harley.png',
+    src: '/images/harley.webp',
     category: 'bedrift',
     categoryLabel: '#Bedrift',
     comment: 'Lekker Harley — en kreativ shoot.',
@@ -66,7 +66,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'harley2',
-    src: '/images/harley2.png',
+    src: '/images/harley2.webp',
     category: 'bedrift',
     categoryLabel: '#Bedrift',
     comment: 'Råskap på to hjul.',
@@ -74,7 +74,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'konfirmanten',
-    src: '/images/konfirmanten.png',
+    src: '/images/konfirmanten.webp',
     category: 'konfirmant',
     categoryLabel: '#Konfirmant',
     comment: 'En stor dag fortjener store bilder.',
@@ -82,7 +82,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'familie',
-    src: '/images/familie.png',
+    src: '/images/familie.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Familien — det viktigste vi har.',
@@ -90,7 +90,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'barn-svarthvitt',
-    src: '/images/barn1_svarthvitt.png',
+    src: '/images/barn1_svarthvitt.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Svart-hvitt fanger følelsen perfekt.',
@@ -98,7 +98,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'barnmednavneskilt',
-    src: '/images/barnmednavneskilt.png',
+    src: '/images/barnmednavneskilt.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Velkommen til verden.',
@@ -106,7 +106,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'barn-skateboard',
-    src: '/images/barn_skateboard.png',
+    src: '/images/barn_skateboard.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Born to skate.',
@@ -114,7 +114,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'sovebaby',
-    src: '/images/sovebaby_svarthvit.png',
+    src: '/images/sovebaby_svarthvit.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Fred og ro — den første søvnen.',
@@ -122,7 +122,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'svarthvit',
-    src: '/images/svarthvit.png',
+    src: '/images/svarthvit.webp',
     category: 'portrett',
     categoryLabel: '#Portrett',
     comment: 'Karakter i hvert drag.',
@@ -130,7 +130,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'parbilde-svarthvitt',
-    src: '/images/parbilde_farger.png',
+    src: '/images/parbilde_farger.webp',
     category: 'bryllup',
     categoryLabel: '#Bryllupsfoto',
     comment: 'Ekte kjærlighet trenger ingen filter.',
@@ -138,7 +138,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'alternativbaby',
-    src: '/images/alternativbaby.png',
+    src: '/images/alternativbaby.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Liten, men allerede full av personlighet.',
@@ -146,7 +146,7 @@ export const allImages: ImageData[] = [
   },
   {
     id: 'babyleonore',
-    src: '/images/babyleonore.png',
+    src: '/images/babyleonore.webp',
     category: 'barn-familie',
     categoryLabel: '#BarnOgFamilie',
     comment: 'Leonore — et navn som passer et eventyr.',
