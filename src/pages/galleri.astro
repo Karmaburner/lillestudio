@@ -33,12 +33,12 @@ const categories = [
 ---
 
 <Layout title="Galleri">
-  <section class="max-w-5xl mx-auto px-6 py-16">
-    <h1 class="text-4xl font-bold text-center mb-3">Galleri</h1>
+  <section class="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16">
+    <h1 class="font-bold text-center mb-3">Galleri</h1>
     <p class="text-stone-500 text-center mb-10">Et utvalg av arbeidene mine</p>
 
     <!-- Filter knapper -->
-    <div class="flex flex-wrap gap-3 justify-center mb-12" id="filter-btns">
+    <div class="flex flex-wrap gap-2 md:gap-3 justify-center mb-8 md:mb-12" id="filter-btns">
       {categories.map(({ id, label }) => (
         <button
           data-filter={id}

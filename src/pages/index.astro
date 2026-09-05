@@ -59,16 +59,18 @@ const testimonials = [
   </section>
 
   <!-- Intro -->
-  <section class="max-w-3xl mx-auto px-6 py-20 text-center">
+  <section class="max-w-3xl mx-auto px-6 py-12 md:py-20 text-center">
     <h2 class="font-semibold mb-4">Øyeblikk som varer</h2>
     <p class="text-stone-500 text-lg leading-relaxed">
       Audun Haugen er en erfaren portrett- og familiefotograf med et kreativt blikk og et naturlig håndlag med folk i alle aldre. Enten det er babyfotografering, konfirmant eller bryllup — hvert bilde forteller din historie.
     </p>
     <div class="flex gap-4 justify-center mt-8 flex-wrap">
-      <a href="/galleri" style="background-color: var(--accent)" class="text-white px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-85">
+      <a href="/galleri" style="background-color: var(--accent)" class="text-white px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-85 inline-flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Se galleri
       </a>
-      <a href="/kontakt" style="border-color: var(--accent); color: var(--accent)" class="border px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-75">
+      <a href="/kontakt" style="border-color: var(--accent); color: var(--accent)" class="border px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-75 inline-flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Ta kontakt
       </a>
     </div>
@@ -78,7 +80,7 @@ const testimonials = [
   </section>
 
   <!-- Kategorier -->
-  <section class="max-w-5xl mx-auto px-6 pb-20">
+  <section class="max-w-5xl mx-auto px-6 pb-12 md:pb-20">
     <h2 class="font-semibold text-center mb-10">Hva kan jeg hjelpe med?</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       {[
@@ -99,9 +101,9 @@ const testimonials = [
   </section>
 
   <!-- Mobilt studio -->
-  <section class="max-w-5xl mx-auto px-6 py-20">
+  <section class="max-w-5xl mx-auto px-6 py-12 md:py-20">
     <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="overflow-hidden rounded-2xl bg-stone-900">
+      <div class="overflow-hidden rounded-2xl" style="background-color: #F7F3EE;">
         <img
           src="/images/mobilt_studio_foto_i_ditt_hjem_bilde.png"
           alt="Mobilt fotostudio hjemme hos deg"
@@ -121,7 +123,8 @@ const testimonials = [
             </li>
           ))}
         </ul>
-        <a href="/kontakt" class="inline-block text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+        <a href="/kontakt" class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Bestill hjemmebesøk
         </a>
       </div>
@@ -129,19 +132,19 @@ const testimonials = [
   </section>
 
   <!-- Testimonials -->
-  <section class="bg-stone-900 py-24 px-6 overflow-hidden">
+  <section class="bg-stone-900 py-14 md:py-24 px-6 overflow-hidden">
     <div class="max-w-5xl mx-auto">
       <p class="text-center text-xs uppercase tracking-[0.2em] text-stone-500 mb-4">Fornøyde kunder</p>
       <h2 class="font-semibold text-center text-white mb-16">Hva sier kundene?</h2>
 
-      <div class="grid md:grid-cols-3 gap-px bg-stone-700">
-        {testimonials.map(({ name, text }, i) => (
-          <div class="bg-stone-900 p-8 flex flex-col justify-between">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        {testimonials.map(({ name, text }) => (
+          <div class="bg-stone-800 rounded-xl p-6 md:p-8 flex flex-col justify-between border-l-4" style="border-color: var(--accent);">
             <div>
-              <span class="block text-6xl leading-none font-serif mb-4" style="color: var(--accent); font-family: 'Cormorant Garamond', serif">"</span>
+              <span class="block text-6xl leading-none mb-4" style="color: var(--accent); font-family: 'Cormorant Garamond', serif">"</span>
               <p class="text-stone-300 leading-relaxed text-lg italic" style="font-family: 'Cormorant Garamond', serif">{text}</p>
             </div>
-            <p class="mt-6 text-xs uppercase tracking-widest text-stone-500">— {name}</p>
+            <p class="mt-6 text-xs uppercase tracking-widest text-stone-400">— {name}</p>
           </div>
         ))}
       </div>
@@ -149,10 +152,11 @@ const testimonials = [
   </section>
 
   <!-- CTA -->
-  <section class="py-20 px-6 text-center">
+  <section class="py-12 md:py-20 px-6 text-center">
     <h2 class="font-semibold mb-4">Klar for en fotografering?</h2>
     <p class="text-stone-500 mb-8">Ta kontakt for å avtale time eller få et tilbud.</p>
-    <a href="/kontakt" class="text-white px-8 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+    <a href="/kontakt" class="inline-flex items-center gap-2 text-white px-8 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       Kontakt meg
     </a>
   </section>

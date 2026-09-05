@@ -1,28 +1,26 @@
 ---
-import type { ImageData } from '../data/images'
 import { allImages } from '../data/images'
 ---
 
-<!-- Lightbox overlay -->
 <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center" role="dialog" aria-modal="true">
 
   <!-- Lukk -->
-  <button id="lb-close" class="absolute top-5 right-6 text-white/60 hover:text-white text-3xl font-light z-10 cursor-pointer transition-colors">✕</button>
+  <button id="lb-close" class="absolute top-4 right-4 text-white/60 hover:text-white text-3xl font-light z-10 cursor-pointer transition-colors w-10 h-10 flex items-center justify-center">✕</button>
 
   <!-- Pil venstre -->
-  <button id="lb-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-5xl z-10 cursor-pointer transition-colors select-none px-2">‹</button>
+  <button id="lb-prev" class="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl md:text-5xl z-10 cursor-pointer transition-colors select-none px-2 py-4">‹</button>
 
-  <!-- Innhold -->
-  <div class="flex flex-col md:flex-row h-full w-full max-w-6xl mx-auto px-12 md:px-20 py-16 gap-8 items-center justify-center">
+  <!-- Innhold: stacked på mobil, side-by-side på desktop -->
+  <div class="flex flex-col md:flex-row w-full max-w-6xl mx-auto px-8 md:px-20 py-14 md:py-16 gap-4 md:gap-8 items-center justify-center h-full overflow-y-auto">
 
     <!-- Bilde -->
-    <div class="flex-1 flex items-center justify-center max-h-full">
-      <img id="lb-img" src="" alt="" class="max-h-[75vh] max-w-full object-contain rounded-sm shadow-2xl" />
+    <div class="flex-1 flex items-center justify-center w-full">
+      <img id="lb-img" src="" alt="" class="max-h-[55vh] md:max-h-[75vh] max-w-full object-contain rounded-sm shadow-2xl" />
     </div>
 
     <!-- Info panel -->
-    <div class="md:w-64 flex flex-col gap-4 text-white shrink-0">
-      <p id="lb-category" class="text-2xl font-semibold tracking-wide" style="font-family: 'Cormorant Garamond', serif; letter-spacing: 0.05em;"></p>
+    <div class="md:w-56 flex flex-col gap-3 text-white shrink-0 w-full">
+      <p id="lb-category" class="text-xl md:text-2xl font-semibold tracking-wide" style="font-family: 'Cormorant Garamond', serif; letter-spacing: 0.05em;"></p>
       <p id="lb-comment" class="text-stone-300 text-sm leading-relaxed italic"></p>
       <div id="lb-tags" class="flex flex-wrap gap-2"></div>
     </div>
@@ -30,7 +28,7 @@ import { allImages } from '../data/images'
   </div>
 
   <!-- Pil høyre -->
-  <button id="lb-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-5xl z-10 cursor-pointer transition-colors select-none px-2">›</button>
+  <button id="lb-next" class="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl md:text-5xl z-10 cursor-pointer transition-colors select-none px-2 py-4">›</button>
 
 </div>
 
@@ -44,7 +42,6 @@ import { allImages } from '../data/images'
   const lbPrev = document.getElementById('lb-prev')
   const lbNext = document.getElementById('lb-next')
 
-  // Shuffled order for random navigation
   let sequence = [...allImages].sort(() => Math.random() - 0.5)
   let currentIndex = 0
 
@@ -52,7 +49,6 @@ import { allImages } from '../data/images'
     const idx = sequence.findIndex(img => img.id === imageId)
     if (idx !== -1) currentIndex = idx
     else {
-      // Image not in sequence, add it at current position
       const img = allImages.find(i => i.id === imageId)
       if (img) { sequence.unshift(img); currentIndex = 0 }
     }
@@ -83,9 +79,7 @@ import { allImages } from '../data/images'
   lbClose.addEventListener('click', closeLightbox)
   lbPrev.addEventListener('click', () => { currentIndex = (currentIndex - 1 + sequence.length) % sequence.length; showCurrent() })
   lbNext.addEventListener('click', () => { currentIndex = (currentIndex + 1) % sequence.length; showCurrent() })
-
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox() })
-
   document.addEventListener('keydown', (e) => {
     if (!lb.classList.contains('hidden')) {
       if (e.key === 'Escape') closeLightbox()
@@ -94,6 +88,17 @@ import { allImages } from '../data/images'
     }
   })
 
-  // Expose globally so any page can trigger it
+  // Touch swipe support
+  let touchStartX = 0
+  lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX }, { passive: true })
+  lb.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) { currentIndex = (currentIndex + 1) % sequence.length }
+      else { currentIndex = (currentIndex - 1 + sequence.length) % sequence.length }
+      showCurrent()
+    }
+  })
+
   window.openLightbox = openLightbox
 </script>

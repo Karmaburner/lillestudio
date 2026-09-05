@@ -9,7 +9,8 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-stone-50 text-stone-800;
+    background-color: #F7F3EE;
+    @apply text-stone-800;
     font-family: 'Inter', sans-serif;
   }
   h1, h2, h3, h4 {
@@ -17,12 +18,13 @@
     letter-spacing: 0.02em;
   }
   h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
     letter-spacing: 0.05em;
   }
   h2 {
-    font-size: 3.5rem;
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
   }
   h3 {
-    font-size: 2.25rem;
+    font-size: clamp(1.4rem, 3vw, 2.25rem);
   }
 }
