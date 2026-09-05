@@ -29,39 +29,39 @@ const kategorier = [
 
 <Layout title="Forside">
   <!-- Hero collage -->
-  <section class="h-[90vh] min-h-[560px] grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-1">
+  <section class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 md:h-[90vh] md:min-h-[560px] gap-1">
 
-    <!-- Stor venstre: tekst + bilde (full høyde) -->
-    <div class="relative row-span-2 overflow-hidden group cursor-pointer" onclick="window.openLightbox('alternativ-barnebilde')">
+    <!-- Venstre: halv høyde på mobil, full på desktop -->
+    <div class="relative h-[48vw] md:h-full md:row-span-2 overflow-hidden group cursor-pointer" onclick="window.openLightbox('alternativ-barnebilde')">
       <img src={`${base}images/alternativ_barnebilde.webp`} alt="Barnefoto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
-    <!-- Øvre col 2 -->
-    <div class="relative overflow-hidden group cursor-pointer" onclick="window.openLightbox('parbilde-farger')">
+    <!-- Høyre topp: synlig mobil og desktop -->
+    <div class="relative h-[48vw] md:h-full overflow-hidden group cursor-pointer" onclick="window.openLightbox('parbilde-farger')">
       <img src={`${base}images/parbilde_farger.webp`} alt="Parbilde farger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
-    <!-- Øvre col 3 -->
+    <!-- Desktop col 3 øvre -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('babykrybbe')">
       <img src={`${base}images/babykrybbe.webp`} alt="Baby i krybbe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
-    <!-- Øvre col 4 -->
+    <!-- Desktop col 4 øvre -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('parbilder')">
       <img src={`${base}images/parbilder.webp`} alt="Parbilde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
-    <!-- Nedre col 2 -->
-    <div class="relative overflow-hidden group cursor-pointer" onclick="window.openLightbox('babygitar')">
+    <!-- Mobil: full breidd nedre rad. Desktop: col 2 nedre -->
+    <div class="relative col-span-2 h-[40vw] md:col-span-1 md:h-full overflow-hidden group cursor-pointer" onclick="window.openLightbox('babygitar')">
       <img src={`${base}images/babygitar.webp`} alt="Baby med gitar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
-    <!-- Nedre col 3 -->
+    <!-- Desktop col 3 nedre -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('gronnbaby')">
       <img src={`${base}images/gr%C3%B8nnbaby.webp`} alt="Baby i grønt" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
 
-    <!-- Nedre col 4 -->
+    <!-- Desktop col 4 nedre -->
     <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('harley')">
       <img src={`${base}images/harley.webp`} alt="Harley Davidson" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
