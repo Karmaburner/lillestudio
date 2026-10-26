@@ -20,6 +20,9 @@ const nav = [
   { href: `${base}kontakt`, label: 'Kontakt' },
 ]
 const currentPath = Astro.url.pathname
+// Utkastet på github.io skal ikke i Google før det er avtale med Audun.
+// Når site i astro.config.mjs byttes til lillestudio.no, forsvinner noindex av seg selv.
+const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
 ---
 
 <!doctype html>
@@ -28,6 +31,7 @@ const currentPath = Astro.url.pathname
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {erUtkast && <meta name="robots" content="noindex, nofollow" />}
     <title>{title} | Lille Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
