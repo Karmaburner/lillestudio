@@ -1,48 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { allImages } from '../data/images'
-const base = import.meta.env.BASE_URL
+import { allImages, kategorier } from '../data/images'
+import { bilde } from '../lib/bilde'
 
-const images = [
-  { id: 'konfirmanten', src: `${base}images/konfirmanten.webp`, alt: 'Konfirmantfoto', category: 'konfirmant' },
-  { id: 'familie', src: `${base}images/familie.webp`, alt: 'Familiefoto', category: 'barn-familie' },
-  { id: 'babykrybbe', src: `${base}images/babykrybbe.webp`, alt: 'Baby i krybbe', category: 'barn-familie' },
-  { id: 'barn-svarthvitt', src: `${base}images/barn1_svarthvitt.webp`, alt: 'Barn svart-hvitt', category: 'barn-familie' },
-  { id: 'barnmednavneskilt', src: `${base}images/barnmednavneskilt.webp`, alt: 'Barn med navneskilt', category: 'barn-familie' },
-  { id: 'barn-skateboard', src: `${base}images/barn_skateboard.webp`, alt: 'Barn på skateboard', category: 'barn-familie' },
-  { id: 'sovebaby', src: `${base}images/sovebaby_svarthvit.webp`, alt: 'Sovende baby', category: 'barn-familie' },
-  { id: 'alternativ-barnebilde', src: `${base}images/alternativ_barnebilde.webp`, alt: 'Barnefoto', category: 'barn-familie' },
-  { id: 'b1', src: `${base}images/b1.webp`, alt: 'Barnefoto', category: 'barn-familie' },
-  { id: 'parbilder', src: `${base}images/parbilder.webp`, alt: 'Parbilde', category: 'bryllup' },
-  { id: 'parbilde-farger', src: `${base}images/parbilde_farger.webp`, alt: 'Parbilde farger', category: 'bryllup' },
-  { id: 'svarthvit', src: `${base}images/svarthvit.webp`, alt: 'Portrett svart-hvitt', category: 'portrett' },
-  { id: 'alternativbaby', src: `${base}images/alternativbaby.webp`, alt: 'Babyfoto', category: 'barn-familie' },
-  { id: 'babygitar', src: `${base}images/babygitar.webp`, alt: 'Baby med gitar', category: 'barn-familie' },
-  { id: 'babyleonore', src: `${base}images/babyleonore.webp`, alt: 'Baby Leonore', category: 'barn-familie' },
-  { id: 'harley', src: `${base}images/harley.webp`, alt: 'Harley Davidson', category: 'bedrift' },
-  { id: 'harley2', src: `${base}images/harley2.webp`, alt: 'Harley Davidson 2', category: 'bedrift' },
-]
-
-const categories = [
-  { id: 'alle', label: 'Alle' },
-  { id: 'barn-familie', label: 'Barn & familie' },
-  { id: 'konfirmant', label: 'Konfirmant' },
-  { id: 'bryllup', label: 'Bryllupsfoto' },
-  { id: 'portrett', label: 'Portrett' },
-  { id: 'bedrift', label: 'Bedrift & reklame' },
-]
+// Galleriet hadde tidligere sin egen hardkodede liste. Nå er images.ts eneste kilde,
+// så lightboxen og galleriet aldri kan komme i utakt.
+const bilder = allImages.map(b => ({ ...b, ...bilde(b.src) }))
 ---
 
-<Layout title="Galleri" description="Se bilder fra fotograferinger i Ringerike og Hønefoss — barn, familie, konfirmant, bryllup, portrett og bedriftsfoto av Audun Haugen.">
+<Layout title="Galleri" description="Se bilder fra fotograferinger i Ringerike og Hønefoss. Barn, familie, konfirmant, bryllup, portrett og bedriftsfoto av Audun Haugen.">
   <section class="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16">
     <h1 class="font-bold text-center mb-3">Galleri</h1>
     <p class="text-stone-500 text-center mb-10">Et utvalg av arbeidene mine</p>
 
     <!-- Filter knapper -->
-    <div class="flex flex-wrap gap-2 md:gap-3 justify-center mb-8 md:mb-12" id="filter-btns">
-      {categories.map(({ id, label }) => (
+    <div class="flex flex-wrap gap-2 md:gap-3 justify-center mb-8 md:mb-12" id="filter-btns" role="group" aria-label="Filtrer galleriet">
+      {kategorier.map(({ id, label }) => (
         <button
+          type="button"
           data-filter={id}
+          aria-pressed={id === 'alle' ? 'true' : 'false'}
           class={`px-5 py-2 rounded-full text-sm font-medium border transition-colors cursor-pointer
             ${id === 'alle' ? 'bg-stone-800 text-white border-stone-800' : 'bg-white text-stone-600 border-stone-300 hover:border-stone-600'}`}
         >
@@ -53,15 +30,27 @@ const categories = [
 
     <!-- Bildegrid -->
     <div class="columns-2 md:columns-3 gap-4 space-y-4" id="gallery-grid">
-      {images.map(({ id, src, alt, category }) => (
-        <div data-category={category} class="break-inside-avoid overflow-hidden rounded-lg gallery-item cursor-pointer" onclick={`window.openLightbox('${id}')`}>
+      {bilder.map(({ id, src, srcset, width, height, alt, category, categoryLabel }) => (
+        <button
+          type="button"
+          data-bilde={id}
+          data-category={category}
+          aria-label={`Åpne bildet: ${alt}`}
+          class="block w-full break-inside-avoid overflow-hidden rounded-lg gallery-item cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-700"
+        >
           <img
             src={src}
+            srcset={srcset}
+            sizes="(min-width: 768px) 33vw, 50vw"
+            width={width}
+            height={height}
             alt={alt}
-            class="w-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg"
+            class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 rounded-lg"
             loading="lazy"
+            decoding="async"
           />
-        </div>
+          <span class="sr-only">{categoryLabel}</span>
+        </button>
       ))}
     </div>
   </section>
@@ -71,6 +60,13 @@ const categories = [
   const btns = document.querySelectorAll<HTMLButtonElement>('#filter-btns button')
   const items = document.querySelectorAll<HTMLElement>('.gallery-item')
 
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const id = item.dataset.bilde
+      if (id) (window as any).openLightbox(id)
+    })
+  })
+
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter!
@@ -78,16 +74,15 @@ const categories = [
       btns.forEach(b => {
         b.classList.remove('bg-stone-800', 'text-white', 'border-stone-800')
         b.classList.add('bg-white', 'text-stone-600', 'border-stone-300')
+        b.setAttribute('aria-pressed', 'false')
       })
       btn.classList.add('bg-stone-800', 'text-white', 'border-stone-800')
       btn.classList.remove('bg-white', 'text-stone-600', 'border-stone-300')
+      btn.setAttribute('aria-pressed', 'true')
 
       items.forEach(item => {
-        if (filter === 'alle' || item.dataset.category === filter) {
-          item.style.display = ''
-        } else {
-          item.style.display = 'none'
-        }
+        const vis = filter === 'alle' || item.dataset.category === filter
+        item.style.display = vis ? '' : 'none'
       })
     })
   })

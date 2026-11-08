@@ -5,12 +5,18 @@ import Lightbox from '../components/Lightbox.astro'
 interface Props {
   title?: string
   description?: string
+  /** Settes på forsiden, som skal ha hele navnet i tittelen uten sidenavn foran. */
+  heltittel?: string
 }
 
 const {
-  title = 'Lille Studio',
-  description = 'Lille Studio — fotograf Audun Haugen i Hønefoss og Ringerike. Portrett, familie, konfirmant, baby og bryllupsfoto. Mobilt studio — vi kommer hjem til deg.',
+  title,
+  heltittel,
+  description = 'Lille Studio er fotograf Audun Haugen i Hønefoss og Ringerike. Portrett, familie, konfirmant, baby og bryllupsfoto. Mobilt studio, vi kommer hjem til deg.',
 } = Astro.props
+
+const sidetittel = heltittel ?? (title ? `${title} | Lille Studio` : 'Fotograf Audun Haugen i Hønefoss | Lille Studio')
+
 const base = import.meta.env.BASE_URL
 const nav = [
   { href: base, label: 'Forside' },
@@ -25,6 +31,28 @@ const currentPath = stripSlash(Astro.url.pathname)
 // Utkastet på github.io skal ikke i Google før det er avtale med Audun.
 // Når site i astro.config.mjs byttes til lillestudio.no, forsvinner noindex av seg selv.
 const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname
+const ogBilde = Astro.site ? new URL(`${base}og-bilde.jpg`, Astro.site).href : `${base}og-bilde.jpg`
+
+const virksomhet = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Lille Studio',
+  description,
+  image: ogBilde,
+  url: Astro.site ? new URL(base, Astro.site).href : base,
+  telephone: '+4799039160',
+  email: 'audun@lillestudio.no',
+  founder: { '@type': 'Person', name: 'Audun Milevasslien Haugen' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Hønefoss', addressRegion: 'Buskerud', addressCountry: 'NO' },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Ringerike' },
+    { '@type': 'AdministrativeArea', name: 'Hole' },
+    { '@type': 'AdministrativeArea', name: 'Jevnaker' },
+  ],
+  sameAs: ['https://www.facebook.com/fotografaudunhaugen', 'https://www.instagram.com/I_am_audun'],
+  priceRange: '$$',
+}
 ---
 
 <!doctype html>
@@ -34,22 +62,43 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     {erUtkast && <meta name="robots" content="noindex, nofollow" />}
-    <title>{title} | Lille Studio</title>
+    <title>{sidetittel}</title>
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}favicon-32.png`} />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lille Studio" />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:title" content={sidetittel} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogBilde} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(virksomhet)} />
   </head>
   <body class="flex flex-col min-h-screen">
+    <a
+      href="#innhold"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-3 focus:left-3 focus:bg-white focus:text-stone-900 focus:px-4 focus:py-2 focus:rounded-full focus:shadow"
+    >
+      Hopp til innhold
+    </a>
     <header class="sticky top-0 z-50 backdrop-blur border-b border-stone-200" style="background-color: #F7F3EEF2;">
-      <nav class="max-w-5xl mx-auto px-6 h-20 md:h-44 flex items-center justify-between">
+      <nav class="max-w-5xl mx-auto px-6 h-20 md:h-44 flex items-center justify-between" aria-label="Hovedmeny">
         <a href={base}>
-          <img src={`${base}images/Logo_Milevasslien.webp`} alt="Lille Studio" class="h-14 md:h-40 w-auto" />
+          <img src={`${base}images/Logo_Milevasslien.webp`} alt="Lille Studio" width="1024" height="1024" class="h-14 md:h-40 w-auto" />
         </a>
         <ul class="hidden md:flex gap-12 text-stone-500" style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; letter-spacing: 0.08em;">
           {nav.map(({ href, label }) => (
             <li>
               <a
                 href={href}
+                aria-current={currentPath === stripSlash(href) ? 'page' : undefined}
                 class={`relative cursor-pointer group inline-block py-1 transition-colors duration-200 hover:text-stone-900
                   ${currentPath === stripSlash(href) ? 'text-stone-900' : ''}`}
               >
@@ -60,8 +109,8 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
             </li>
           ))}
         </ul>
-        <button id="menu-btn" class="md:hidden p-2 text-stone-700" aria-label="Meny">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="menu-btn" class="md:hidden p-2 text-stone-700" aria-label="Meny" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
@@ -70,7 +119,7 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
         <ul class="flex flex-col px-6 py-4 gap-4 text-stone-600" style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; letter-spacing: 0.08em;">
           {nav.map(({ href, label }) => (
             <li>
-              <a href={href} class="hover:text-stone-900 transition-colors">{label}</a>
+              <a href={href} aria-current={currentPath === stripSlash(href) ? 'page' : undefined} class="hover:text-stone-900 transition-colors">{label}</a>
             </li>
           ))}
         </ul>
@@ -79,7 +128,7 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
 
     <Lightbox />
 
-    <main class="flex-1">
+    <main id="innhold" class="flex-1">
       <slot />
     </main>
 
@@ -87,50 +136,56 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
       <!-- Mobil: kompakt og sentrert -->
       <div class="md:hidden px-6 py-8 flex flex-col items-center gap-4 text-sm text-stone-500">
         <p class="font-semibold text-stone-700">Lille Studio · Fotograf Audun Haugen</p>
-        <div class="flex gap-5">
-          <a href="tel:99039160" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="flex flex-wrap justify-center gap-5">
+          <a href="tel:+4799039160" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             99 03 91 60
           </a>
           <a href="mailto:audun@lillestudio.no" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             E-post
           </a>
+          <a href="https://www.facebook.com/fotografaudunhaugen" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook
+          </a>
           <a href="https://www.instagram.com/I_am_audun" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             Instagram
           </a>
         </div>
         <p class="text-xs text-stone-400">© {new Date().getFullYear()} Lille Studio</p>
+        <p class="text-xs text-stone-400"><a href={`${base}personvern`} class="underline underline-offset-2 hover:text-stone-600">Personvern</a></p>
         <p class="text-xs text-stone-400">Nettside av <a href="https://lilitlabs.com" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-stone-600">Lilit Labs</a></p>
       </div>
 
       <!-- Desktop: original layout -->
       <div class="hidden md:flex max-w-5xl mx-auto px-6 py-10 flex-row justify-between gap-6 text-sm text-stone-500">
         <div>
-          <img src={`${base}images/Logo_Milevasslien.webp`} alt="Lille Studio" class="h-16 w-auto mb-2 opacity-80" />
+          <img src={`${base}images/Logo_Milevasslien.webp`} alt="" width="1024" height="1024" class="h-16 w-auto mb-2 opacity-80" />
           <p class="text-xs">Fotograf Audun Haugen</p>
         </div>
         <div class="flex flex-col gap-1">
-          <a href="tel:99039160" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+4799039160" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             99 03 91 60
           </a>
           <a href="mailto:audun@lillestudio.no" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             audun@lillestudio.no
           </a>
           <a href="https://www.facebook.com/fotografaudunhaugen" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             Facebook
           </a>
           <a href="https://www.instagram.com/I_am_audun" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             Instagram
           </a>
         </div>
         <div class="self-end text-xs text-right space-y-1">
           <p>© {new Date().getFullYear()} Lille Studio</p>
+          <p><a href={`${base}personvern`} class="hover:text-stone-700 transition-colors underline underline-offset-2">Personvern</a></p>
           <p>Laget av <a href="https://lilitlabs.com" target="_blank" rel="noopener" class="hover:text-stone-700 transition-colors underline underline-offset-2">Lilit Labs</a></p>
         </div>
       </div>
@@ -139,7 +194,10 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
     <script>
       const btn = document.getElementById('menu-btn')
       const menu = document.getElementById('mobile-menu')
-      btn?.addEventListener('click', () => menu?.classList.toggle('hidden'))
+      btn?.addEventListener('click', () => {
+        const apen = menu?.classList.toggle('hidden') === false
+        btn.setAttribute('aria-expanded', String(apen))
+      })
     </script>
   </body>
 </html>

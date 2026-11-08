@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# genererte bildevarianter (lages av npm run bilder)
+public/images/avledet/

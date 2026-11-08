@@ -1,12 +1,15 @@
 {
-  "name": "nebulous-nova",
+  "name": "lillestudio",
   "type": "module",
   "version": "0.0.1",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
+    "bilder": "node scripts/bildedimensjoner.mjs",
+    "predev": "node scripts/bildedimensjoner.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/bildedimensjoner.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

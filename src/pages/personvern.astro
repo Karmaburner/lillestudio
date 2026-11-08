@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro'
+const base = import.meta.env.BASE_URL
+const oppdatert = '9. november 2026'
+---
+
+<Layout
+  title="Personvern"
+  description="Slik behandler Lille Studio personopplysninger fra kontaktskjema, e-post og fotooppdrag."
+>
+  <section class="max-w-2xl mx-auto px-6 py-10 md:py-16">
+    <h1 class="font-bold mb-3">Personvern</h1>
+    <p class="text-stone-500 mb-10">Sist oppdatert {oppdatert}</p>
+
+    <div class="space-y-8 text-stone-600 leading-relaxed">
+      <div>
+        <h2 class="text-xl font-semibold text-stone-800 mb-2">Hvem er ansvarlig</h2>
+        <p>
+          Lille Studio ved Audun Milevasslien Haugen er behandlingsansvarlig for opplysningene som samles inn
+          gjennom denne nettsiden. Du når oss på
+          <a href="mailto:audun@lillestudio.no" class="underline underline-offset-2 hover:text-stone-800">audun@lillestudio.no</a>
+          eller <a href="tel:+4799039160" class="underline underline-offset-2 hover:text-stone-800">99 03 91 60</a>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-stone-800 mb-2">Hva vi samler inn</h2>
+        <p>
+          Sender du inn kontaktskjemaet, får vi navn, e-postadresse, hvilken type fotografering du spør om,
+          og meldingen du skriver. Vi samler ikke inn noe annet fra besøkende. Nettsiden bruker ingen
+          informasjonskapsler til analyse eller markedsføring, og har ingen sporingskoder fra tredjeparter.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-stone-800 mb-2">Hva vi bruker det til</h2>
+        <p>
+          Opplysningene brukes bare til å svare på henvendelsen og eventuelt avtale et oppdrag. Grunnlaget er
+          berettiget interesse i å besvare henvendelser, og avtale når du bestiller en fotografering. Vi selger
+          ikke opplysninger videre, og deler dem ikke med andre enn leverandører som er nødvendige for å drifte
+          e-post og skjema.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-stone-800 mb-2">Hvor lenge vi lagrer</h2>
+        <p>
+          Henvendelser som ikke blir til et oppdrag slettes innen tolv måneder. Opplysninger knyttet til et
+          gjennomført oppdrag lagres så lenge regnskapsloven krever det.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-stone-800 mb-2">Bilder av deg</h2>
+        <p>
+          Bilder fra fotografering er personopplysninger. De brukes i portefølje, på nettsiden eller i sosiale
+          medier bare når du har sagt ja til det, og du kan trekke samtykket tilbake når som helst ved å ta
+          kontakt. Da fjernes bildene fra nettsiden og sosiale medier.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-stone-800 mb-2">Rettighetene dine</h2>
+        <p>
+          Du har rett til innsyn i opplysningene vi har om deg, til å få dem rettet eller slettet, og til å
+          klage til Datatilsynet hvis du mener behandlingen er ulovlig. Ta kontakt, så ordner vi det.
+        </p>
+      </div>
+    </div>
+
+    <a
+      href={`${base}kontakt`}
+      class="mt-10 inline-flex items-center gap-2 text-white px-6 py-3 rounded-full font-medium hover:opacity-85 transition-opacity"
+      style="background-color: var(--accent)"
+    >
+      Ta kontakt
+    </a>
+  </section>
+</Layout>

@@ -1,0 +1,538 @@
+{
+  "/images/4åring.webp": {
+    "width": 2877,
+    "height": 4195,
+    "varianter": [
+      {
+        "url": "/images/avledet/4åring-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/4åring-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/4åring-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/4åring-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/4åring.webp",
+        "width": 2877
+      }
+    ]
+  },
+  "/images/Fotograf_Audun_Milevasslien_portrett_Om_Meg.webp": {
+    "width": 2208,
+    "height": 2188,
+    "varianter": [
+      {
+        "url": "/images/avledet/Fotograf_Audun_Milevasslien_portrett_Om_Meg-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/Fotograf_Audun_Milevasslien_portrett_Om_Meg-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/Fotograf_Audun_Milevasslien_portrett_Om_Meg-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/Fotograf_Audun_Milevasslien_portrett_Om_Meg-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/Fotograf_Audun_Milevasslien_portrett_Om_Meg.webp",
+        "width": 2208
+      }
+    ]
+  },
+  "/images/Logo_Milevasslien.webp": {
+    "width": 1024,
+    "height": 1024,
+    "varianter": [
+      {
+        "url": "/images/avledet/Logo_Milevasslien-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/Logo_Milevasslien-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/Logo_Milevasslien.webp",
+        "width": 1024
+      }
+    ]
+  },
+  "/images/alternativ_barnebilde.webp": {
+    "width": 3475,
+    "height": 3230,
+    "varianter": [
+      {
+        "url": "/images/avledet/alternativ_barnebilde-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/alternativ_barnebilde-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/alternativ_barnebilde-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/alternativ_barnebilde-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/alternativ_barnebilde.webp",
+        "width": 3475
+      }
+    ]
+  },
+  "/images/alternativbaby.webp": {
+    "width": 2048,
+    "height": 2048,
+    "varianter": [
+      {
+        "url": "/images/avledet/alternativbaby-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/alternativbaby-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/alternativbaby-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/alternativbaby-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/alternativbaby.webp",
+        "width": 2048
+      }
+    ]
+  },
+  "/images/b1.webp": {
+    "width": 5906,
+    "height": 4054,
+    "varianter": [
+      {
+        "url": "/images/avledet/b1-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/b1-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/b1-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/b1-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/b1.webp",
+        "width": 5906
+      }
+    ]
+  },
+  "/images/babygitar.webp": {
+    "width": 2048,
+    "height": 1053,
+    "varianter": [
+      {
+        "url": "/images/avledet/babygitar-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/babygitar-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/babygitar-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/babygitar-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/babygitar.webp",
+        "width": 2048
+      }
+    ]
+  },
+  "/images/babykrybbe.webp": {
+    "width": 3898,
+    "height": 4656,
+    "varianter": [
+      {
+        "url": "/images/avledet/babykrybbe-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/babykrybbe-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/babykrybbe-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/babykrybbe-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/babykrybbe.webp",
+        "width": 3898
+      }
+    ]
+  },
+  "/images/babyleonore.webp": {
+    "width": 2048,
+    "height": 1830,
+    "varianter": [
+      {
+        "url": "/images/avledet/babyleonore-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/babyleonore-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/babyleonore-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/babyleonore-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/babyleonore.webp",
+        "width": 2048
+      }
+    ]
+  },
+  "/images/barn1_svarthvitt.webp": {
+    "width": 5620,
+    "height": 3552,
+    "varianter": [
+      {
+        "url": "/images/avledet/barn1_svarthvitt-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/barn1_svarthvitt-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/barn1_svarthvitt-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/barn1_svarthvitt-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/barn1_svarthvitt.webp",
+        "width": 5620
+      }
+    ]
+  },
+  "/images/barn_skateboard.webp": {
+    "width": 1383,
+    "height": 1358,
+    "varianter": [
+      {
+        "url": "/images/avledet/barn_skateboard-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/barn_skateboard-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/barn_skateboard-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/barn_skateboard.webp",
+        "width": 1383
+      }
+    ]
+  },
+  "/images/barnmednavneskilt.webp": {
+    "width": 3650,
+    "height": 2847,
+    "varianter": [
+      {
+        "url": "/images/avledet/barnmednavneskilt-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/barnmednavneskilt-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/barnmednavneskilt-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/barnmednavneskilt-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/barnmednavneskilt.webp",
+        "width": 3650
+      }
+    ]
+  },
+  "/images/familie.webp": {
+    "width": 4862,
+    "height": 3803,
+    "varianter": [
+      {
+        "url": "/images/avledet/familie-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/familie-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/familie-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/familie-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/familie.webp",
+        "width": 4862
+      }
+    ]
+  },
+  "/images/grønnbaby.webp": {
+    "width": 4032,
+    "height": 3804,
+    "varianter": [
+      {
+        "url": "/images/avledet/grønnbaby-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/grønnbaby-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/grønnbaby-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/grønnbaby-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/grønnbaby.webp",
+        "width": 4032
+      }
+    ]
+  },
+  "/images/harley.webp": {
+    "width": 1080,
+    "height": 864,
+    "varianter": [
+      {
+        "url": "/images/avledet/harley-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/harley-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/harley.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "/images/harley2.webp": {
+    "width": 1080,
+    "height": 864,
+    "varianter": [
+      {
+        "url": "/images/avledet/harley2-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/harley2-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/harley2.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "/images/konfirmanten.webp": {
+    "width": 3452,
+    "height": 4857,
+    "varianter": [
+      {
+        "url": "/images/avledet/konfirmanten-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/konfirmanten-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/konfirmanten-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/konfirmanten-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/konfirmanten.webp",
+        "width": 3452
+      }
+    ]
+  },
+  "/images/mobilt_studio_foto_i_ditt_hjem_bilde.webp": {
+    "width": 1536,
+    "height": 1024,
+    "varianter": [
+      {
+        "url": "/images/avledet/mobilt_studio_foto_i_ditt_hjem_bilde-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/mobilt_studio_foto_i_ditt_hjem_bilde-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/mobilt_studio_foto_i_ditt_hjem_bilde-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/mobilt_studio_foto_i_ditt_hjem_bilde.webp",
+        "width": 1536
+      }
+    ]
+  },
+  "/images/parbilde_farger.webp": {
+    "width": 4398,
+    "height": 3273,
+    "varianter": [
+      {
+        "url": "/images/avledet/parbilde_farger-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/parbilde_farger-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/parbilde_farger-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/parbilde_farger-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/parbilde_farger.webp",
+        "width": 4398
+      }
+    ]
+  },
+  "/images/parbilder.webp": {
+    "width": 3216,
+    "height": 3162,
+    "varianter": [
+      {
+        "url": "/images/avledet/parbilder-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/parbilder-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/parbilder-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/parbilder-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/parbilder.webp",
+        "width": 3216
+      }
+    ]
+  },
+  "/images/sovebaby_svarthvit.webp": {
+    "width": 5620,
+    "height": 3552,
+    "varianter": [
+      {
+        "url": "/images/avledet/sovebaby_svarthvit-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/sovebaby_svarthvit-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/sovebaby_svarthvit-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/avledet/sovebaby_svarthvit-1600.webp",
+        "width": 1600
+      },
+      {
+        "url": "/images/sovebaby_svarthvit.webp",
+        "width": 5620
+      }
+    ]
+  },
+  "/images/svarthvit.webp": {
+    "width": 1494,
+    "height": 979,
+    "varianter": [
+      {
+        "url": "/images/avledet/svarthvit-480.webp",
+        "width": 480
+      },
+      {
+        "url": "/images/avledet/svarthvit-800.webp",
+        "width": 800
+      },
+      {
+        "url": "/images/avledet/svarthvit-1200.webp",
+        "width": 1200
+      },
+      {
+        "url": "/images/svarthvit.webp",
+        "width": 1494
+      }
+    ]
+  }
+}

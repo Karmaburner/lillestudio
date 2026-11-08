@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import { bildeMedId } from '../data/images'
+import { bilde } from '../lib/bilde'
 const base = import.meta.env.BASE_URL
 
 const testimonials = [
@@ -11,61 +13,56 @@ const testimonials = [
     name: 'Thea Karina Jakobsson',
     text: 'Fantastiske bilder av de tre barna våre, og et fantastisk håndlag med ungene under fotograferingen. 100% anbefalning fra oss her på Almemoen.',
   },
-  {
-    name: 'Kenneth Hansen',
-    text: 'Kreativ hjerne på denne fotografen, morsom og blid. Kommer definitivt til å bruke han ved neste anledning! Anbefales på det varmeste!',
-  },
 ]
+
+// Hero: hvert felt peker på en egen id i images.ts, ingen gjentakelser.
+const hero = [
+  { id: 'babykrybbe', klasse: 'relative h-[48vw] md:h-full md:row-span-2 overflow-hidden group cursor-pointer' },
+  { id: 'parbilde-farger', klasse: 'relative h-[48vw] md:h-full overflow-hidden group cursor-pointer' },
+  { id: 'konfirmanten', klasse: 'relative overflow-hidden group cursor-pointer hidden md:block' },
+  { id: 'parbilder', klasse: 'relative overflow-hidden group cursor-pointer hidden md:block' },
+  { id: 'babygitar', klasse: 'relative col-span-2 h-[40vw] md:col-span-1 md:h-full overflow-hidden group cursor-pointer' },
+  { id: 'gronnbaby', klasse: 'relative overflow-hidden group cursor-pointer hidden md:block' },
+  { id: 'harley', klasse: 'relative overflow-hidden group cursor-pointer hidden md:block' },
+].map(felt => {
+  const data = bildeMedId(felt.id)!
+  return { ...felt, ...data, ...bilde(data.src) }
+})
 
 const kategorier = [
-  { label: 'Barn & familie', img: `${base}images/familie.webp` },
-  { label: 'Konfirmant', img: `${base}images/konfirmanten.webp` },
-  { label: 'Bryllupsfoto', img: `${base}images/parbilder.webp` },
-  { label: 'Portrett', img: `${base}images/svarthvit.webp` },
-  { label: 'Babyfoto', img: `${base}images/babykrybbe.webp` },
-  { label: 'Bedrift & reklame', img: `${base}images/svarthvit.webp` },
-]
+  { label: 'Barn & familie', id: 'familie' },
+  { label: 'Konfirmant', id: 'konfirmanten' },
+  { label: 'Bryllupsfoto', id: 'parbilder' },
+  { label: 'Portrett', id: 'svarthvit' },
+  { label: 'Babyfoto', id: 'babykrybbe' },
+  { label: 'Bedrift & reklame', id: 'harley2' },
+].map(k => ({ ...k, ...bilde(bildeMedId(k.id)!.src) }))
+
+const mobiltStudio = bilde('/images/mobilt_studio_foto_i_ditt_hjem_bilde.webp')
 ---
 
-<Layout title="Forside" description="Fotograf Audun Haugen i Hønefoss og Ringerike. Profesjonell familie-, portrett-, konfirmant- og bryllupsfotografering. Mobilt studio — vi kommer hjem til deg.">
+<Layout
+  heltittel="Fotograf Audun Haugen i Hønefoss | Lille Studio"
+  description="Fotograf Audun Haugen i Hønefoss og Ringerike. Profesjonell familie-, portrett-, konfirmant- og bryllupsfotografering. Mobilt studio, vi kommer hjem til deg."
+>
   <!-- Hero collage -->
-  <section class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 md:h-[90vh] md:min-h-[560px] gap-1">
-
-    <!-- Venstre: halv høyde på mobil, full på desktop -->
-    <div class="relative h-[48vw] md:h-full md:row-span-2 overflow-hidden group cursor-pointer" onclick="window.openLightbox('babykrybbe')">
-      <img src={`${base}images/babykrybbe.webp`} alt="Baby i krybbe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
-    <!-- Høyre topp: synlig mobil og desktop -->
-    <div class="relative h-[48vw] md:h-full overflow-hidden group cursor-pointer" onclick="window.openLightbox('parbilde-farger')">
-      <img src={`${base}images/parbilde_farger.webp`} alt="Parbilde farger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
-    <!-- Desktop col 3 øvre -->
-    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('babykrybbe')">
-      <img src={`${base}images/babykrybbe.webp`} alt="Baby i krybbe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
-    <!-- Desktop col 4 øvre -->
-    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('parbilder')">
-      <img src={`${base}images/parbilder.webp`} alt="Parbilde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
-    <!-- Mobil: full breidd nedre rad. Desktop: col 2 nedre -->
-    <div class="relative col-span-2 h-[40vw] md:col-span-1 md:h-full overflow-hidden group cursor-pointer" onclick="window.openLightbox('babygitar')">
-      <img src={`${base}images/babygitar.webp`} alt="Baby med gitar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
-    <!-- Desktop col 3 nedre -->
-    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('gronnbaby')">
-      <img src={`${base}images/gr%C3%B8nnbaby.webp`} alt="Baby i grønt" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
-    <!-- Desktop col 4 nedre -->
-    <div class="relative overflow-hidden group cursor-pointer hidden md:block" onclick="window.openLightbox('harley')">
-      <img src={`${base}images/harley.webp`} alt="Harley Davidson" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-    </div>
-
+  <section class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 md:h-[90vh] md:min-h-[560px] gap-1" aria-label="Utvalgte bilder">
+    {hero.map(({ id, klasse, src, srcset, width, height, alt }, i) => (
+      <button type="button" data-bilde={id} aria-label={`Åpne bildet: ${alt}`} class={`${klasse} focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white`}>
+        <img
+          src={src}
+          srcset={srcset}
+          sizes="(min-width: 768px) 25vw, 50vw"
+          width={width}
+          height={height}
+          alt={alt}
+          loading={i < 2 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : undefined}
+          decoding="async"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      </button>
+    ))}
   </section>
 
   <!-- Intro -->
@@ -76,16 +73,16 @@ const kategorier = [
     </p>
     <div class="flex gap-4 justify-center mt-8 flex-wrap">
       <a href={`${base}galleri`} style="background-color: var(--accent)" class="text-white px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-85 inline-flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Se galleri
       </a>
       <a href={`${base}kontakt`} style="border-color: var(--accent); color: var(--accent)" class="border px-7 py-3 rounded-full font-medium transition-opacity hover:opacity-75 inline-flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Ta kontakt
       </a>
     </div>
-    <a href={`${base}om-meg`} class="inline-block mt-6 text-sm font-medium text-stone-400 underline underline-offset-4 hover:text-stone-700 transition-colors">
-      Les mer om Audun →
+    <a href={`${base}om-meg`} class="inline-block mt-6 text-sm font-medium text-stone-500 underline underline-offset-4 hover:text-stone-700 transition-colors">
+      Les mer om Audun
     </a>
   </section>
 
@@ -93,10 +90,20 @@ const kategorier = [
   <section class="max-w-5xl mx-auto px-6 pb-12 md:pb-20">
     <h2 class="font-semibold text-center mb-10">Hva kan jeg hjelpe med?</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {kategorier.map(({ label, img }) => (
+      {kategorier.map(({ label, src, srcset, width, height }) => (
         <a href={`${base}galleri`} class="relative overflow-hidden rounded-lg aspect-square group">
-          <img src={img} alt={label} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+          <img
+            src={src}
+            srcset={srcset}
+            sizes="(min-width: 768px) 33vw, 50vw"
+            width={width}
+            height={height}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>
           <span class="absolute bottom-3 left-3 text-white font-medium text-sm">{label}</span>
         </a>
       ))}
@@ -108,13 +115,19 @@ const kategorier = [
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="overflow-hidden rounded-2xl" style="background-color: #F7F3EE;">
         <img
-          src={`${base}images/mobilt_studio_foto_i_ditt_hjem_bilde.webp`}
-          alt="Mobilt fotostudio hjemme hos deg"
-          class="w-full object-contain"
+          src={mobiltStudio.src}
+          srcset={mobiltStudio.srcset}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          width={mobiltStudio.width}
+          height={mobiltStudio.height}
+          alt="Mobilt fotostudio rigget opp i en stue"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto object-contain"
         />
       </div>
       <div>
-        <p class="text-xs uppercase tracking-widest text-stone-400 mb-3">Der DU er</p>
+        <p class="text-xs uppercase tracking-widest text-stone-500 mb-3">Der DU er</p>
         <h2 class="font-semibold mb-5">Studioet kommer hjem til deg</h2>
         <p class="text-stone-500 leading-relaxed mb-6">
           Audun har et komplett mobilt fotostudio og reiser hjem til deg. Du slipper å stresse med transport og fremmede omgivelser. Bildene tas der familien allerede er trygg.
@@ -122,12 +135,12 @@ const kategorier = [
         <ul class="space-y-2 text-sm text-stone-600 mb-8">
           {['Profesjonelt utstyr på din adresse', 'Hele Ringerike og omegn', 'Rolige omgivelser for barn og baby', 'Fleksibel timeavtale'].map(item => (
             <li class="flex items-center gap-2">
-              <span class="text-stone-400">✓</span> {item}
+              <span class="text-stone-500" aria-hidden="true">✓</span> {item}
             </li>
           ))}
         </ul>
         <a href={`${base}kontakt`} class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Bestill hjemmebesøk
         </a>
       </div>
@@ -137,18 +150,18 @@ const kategorier = [
   <!-- Testimonials -->
   <section class="bg-stone-900 py-14 md:py-24 px-6 overflow-hidden">
     <div class="max-w-5xl mx-auto">
-      <p class="text-center text-xs uppercase tracking-[0.2em] text-stone-500 mb-4">Fornøyde kunder</p>
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-stone-400 mb-4">Fornøyde kunder</p>
       <h2 class="font-semibold text-center text-white mb-16">Hva sier kundene?</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto">
         {testimonials.map(({ name, text }) => (
-          <div class="bg-stone-800 rounded-xl p-6 md:p-8 flex flex-col justify-between border-l-4" style="border-color: var(--accent);">
+          <figure class="bg-stone-800 rounded-xl p-6 md:p-8 flex flex-col justify-between border-l-4" style="border-color: var(--accent);">
             <div>
-              <span class="block text-6xl leading-none mb-1" style="color: var(--accent); font-family: 'Cormorant Garamond', serif">"</span>
-              <p class="text-stone-300 leading-relaxed text-lg italic" style="font-family: 'Cormorant Garamond', serif">{text}</p>
+              <span class="block text-6xl leading-none mb-1" style="color: var(--accent); font-family: 'Cormorant Garamond', serif" aria-hidden="true">"</span>
+              <blockquote class="text-stone-300 leading-relaxed text-lg italic" style="font-family: 'Cormorant Garamond', serif">{text}</blockquote>
             </div>
-            <p class="mt-6 text-xs uppercase tracking-widest text-stone-400">— {name}</p>
-          </div>
+            <figcaption class="mt-6 text-xs uppercase tracking-widest text-stone-400">{name}</figcaption>
+          </figure>
         ))}
       </div>
     </div>
@@ -159,8 +172,17 @@ const kategorier = [
     <h2 class="font-semibold mb-4">Klar for en fotografering?</h2>
     <p class="text-stone-500 mb-8">Ta kontakt for å avtale time eller få et tilbud.</p>
     <a href={`${base}kontakt`} class="inline-flex items-center gap-2 text-white px-8 py-3 rounded-full font-medium hover:opacity-85 transition-opacity" style="background-color: var(--accent)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       Kontakt meg
     </a>
   </section>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-bilde]').forEach(el => {
+    el.addEventListener('click', () => {
+      const id = el.dataset.bilde
+      if (id) (window as any).openLightbox(id)
+    })
+  })
+</script>
