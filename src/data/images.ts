@@ -137,6 +137,14 @@ export const allImages: ImageData[] = [
     tags: ['#par', '#bryllup', '#ekte'],
   },
   {
+    id: 'b1',
+    src: '/images/b1.webp',
+    category: 'barn-familie',
+    categoryLabel: '#BarnOgFamilie',
+    comment: 'Dypt i drømmeland.',
+    tags: ['#barnefoto', '#naturlig', '#ro'],
+  },
+  {
     id: 'alternativbaby',
     src: '/images/alternativbaby.webp',
     category: 'barn-familie',

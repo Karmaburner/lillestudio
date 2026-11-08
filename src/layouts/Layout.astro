@@ -19,7 +19,9 @@ const nav = [
   { href: `${base}om-meg`, label: 'Om meg' },
   { href: `${base}kontakt`, label: 'Kontakt' },
 ]
-const currentPath = Astro.url.pathname
+// Astro bygger kataloger, så pathname har avsluttende skråstrek mens nav-hrefene ikke har det.
+const stripSlash = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p)
+const currentPath = stripSlash(Astro.url.pathname)
 // Utkastet på github.io skal ikke i Google før det er avtale med Audun.
 // Når site i astro.config.mjs byttes til lillestudio.no, forsvinner noindex av seg selv.
 const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
@@ -49,11 +51,11 @@ const erUtkast = Astro.site?.hostname.endsWith('github.io') ?? false
               <a
                 href={href}
                 class={`relative cursor-pointer group inline-block py-1 transition-colors duration-200 hover:text-stone-900
-                  ${currentPath === href ? 'text-stone-900' : ''}`}
+                  ${currentPath === stripSlash(href) ? 'text-stone-900' : ''}`}
               >
                 {label}
                 <span class={`absolute bottom-0 left-0 h-px bg-stone-800 transition-all duration-300
-                  ${currentPath === href ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  ${currentPath === stripSlash(href) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </a>
             </li>
           ))}
