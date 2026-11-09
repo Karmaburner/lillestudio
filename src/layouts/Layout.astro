@@ -133,60 +133,60 @@ const virksomhet = {
     </main>
 
     <footer class="mt-0 md:mt-20 border-t border-stone-200" style="background-color: #EDE8E1;">
-      <!-- Mobil: kompakt og sentrert -->
-      <div class="md:hidden px-6 py-8 flex flex-col items-center gap-4 text-sm text-stone-500">
-        <p class="font-semibold text-stone-700">Lille Studio · Fotograf Audun Haugen</p>
-        <div class="flex flex-wrap justify-center gap-5">
-          <a href="tel:+4799039160" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            99 03 91 60
-          </a>
-          <a href="mailto:audun@lillestudio.no" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            E-post
-          </a>
-          <a href="https://www.facebook.com/fotografaudunhaugen" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            Facebook
-          </a>
-          <a href="https://www.instagram.com/I_am_audun" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            Instagram
-          </a>
+      <div class="max-w-5xl mx-auto px-6 py-8 grid gap-8 md:gap-10 md:grid-cols-3 text-sm text-stone-600">
+
+        <!-- Virksomheten -->
+        <div>
+          <img src={`${base}images/Logo_Milevasslien.webp`} alt="" width="1024" height="1024" class="h-12 w-auto mb-3 opacity-90" />
+          <p class="font-semibold text-stone-800">Lille Studio</p>
+          <p>Fotograf Audun Haugen</p>
+          <p>Hønefoss og Ringerike</p>
         </div>
-        <p class="text-xs text-stone-400">© {new Date().getFullYear()} Lille Studio</p>
-        <p class="text-xs text-stone-400"><a href={`${base}personvern`} class="underline underline-offset-2 hover:text-stone-600">Personvern</a></p>
-        <p class="text-xs text-stone-400">Nettside av <a href="https://lilitlabs.com" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-stone-600">Lilit Labs</a></p>
+
+        <!-- Kontakt -->
+        <div>
+          <h2 class="font-semibold text-stone-800 mb-3">Kontakt</h2>
+          <div class="flex flex-col">
+            <a href="tel:+4799039160" class="inline-flex items-center gap-2 py-1.5 hover:text-stone-900 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              99 03 91 60
+            </a>
+            <a href="mailto:audun@lillestudio.no" class="inline-flex items-center gap-2 py-1.5 hover:text-stone-900 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              audun@lillestudio.no
+            </a>
+            <a href="https://www.facebook.com/fotografaudunhaugen" target="_blank" rel="noopener" class="inline-flex items-center gap-2 py-1.5 hover:text-stone-900 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              Facebook
+            </a>
+            <a href="https://www.instagram.com/I_am_audun" target="_blank" rel="noopener" class="inline-flex items-center gap-2 py-1.5 hover:text-stone-900 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @I_am_audun
+            </a>
+          </div>
+        </div>
+
+        <!-- Sider -->
+        <nav aria-label="Sider i bunnteksten">
+          <h2 class="font-semibold text-stone-800 mb-3">Sider</h2>
+          <ul class="grid grid-cols-2 gap-x-6">
+            {nav.map(({ href, label }) => (
+              <li>
+                <a href={href} class="inline-block py-1.5 hover:text-stone-900 transition-colors">{label}</a>
+              </li>
+            ))}
+            <li>
+              <a href={`${base}personvern`} class="inline-block py-1.5 hover:text-stone-900 transition-colors">Personvern</a>
+            </li>
+          </ul>
+        </nav>
+
       </div>
 
-      <!-- Desktop: original layout -->
-      <div class="hidden md:flex max-w-5xl mx-auto px-6 py-10 flex-row justify-between gap-6 text-sm text-stone-500">
-        <div>
-          <img src={`${base}images/Logo_Milevasslien.webp`} alt="" width="1024" height="1024" class="h-16 w-auto mb-2 opacity-80" />
-          <p class="text-xs">Fotograf Audun Haugen</p>
-        </div>
-        <div class="flex flex-col gap-1">
-          <a href="tel:+4799039160" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.38a2 2 0 0 1 1.79-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.46-.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            99 03 91 60
-          </a>
-          <a href="mailto:audun@lillestudio.no" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            audun@lillestudio.no
-          </a>
-          <a href="https://www.facebook.com/fotografaudunhaugen" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            Facebook
-          </a>
-          <a href="https://www.instagram.com/I_am_audun" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-stone-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            Instagram
-          </a>
-        </div>
-        <div class="self-end text-xs text-right space-y-1">
+      <div class="border-t border-stone-300/70">
+        <div class="max-w-5xl mx-auto px-6 py-3 flex flex-col md:flex-row gap-1 md:gap-2 md:justify-between md:items-center text-xs text-stone-600">
           <p>© {new Date().getFullYear()} Lille Studio</p>
-          <p><a href={`${base}personvern`} class="hover:text-stone-700 transition-colors underline underline-offset-2">Personvern</a></p>
-          <p>Laget av <a href="https://lilitlabs.com" target="_blank" rel="noopener" class="hover:text-stone-700 transition-colors underline underline-offset-2">Lilit Labs</a></p>
+          <p>Nettside av: <a href="https://lilitlabs.com" target="_blank" rel="noopener" class="inline-block py-1.5 underline underline-offset-2 hover:text-stone-900 transition-colors">Lilit Labs</a></p>
         </div>
       </div>
     </footer>
